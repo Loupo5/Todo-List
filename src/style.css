@@ -1,3 +1,12 @@
+@font-face {
+    font-family: 'Magical Night';
+    src: url('./fonts/MagicalNight-Regular.woff2') format('woff2'),
+        url('./fonts/MagicalNight-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -5,13 +14,13 @@
 }
 
 body {
+    font-family: Magical Night;
     min-height: 98vh;
     background: url("images/mystical-forest.jpg") no-repeat;
     background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
-    
 }
 
 .wrapper {
@@ -28,7 +37,43 @@ body {
     grid-column: 1 / 2;
     grid-row: 1 / -1;
     background: rgba(45, 95, 93, 0.4);
+    display: flex;
+    position: relative;
+
 }
+
+.sidebar > * {
+    margin: 20px;
+}
+
+.add {
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    font-family: Magical Night;
+    font-size: 2.5em;
+    display: flex;
+    width: 8em;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    padding: 10px;
+    font-weight: bold;
+    background-color: rgba(212, 162, 76, 0.85);
+    border: 1px solid rgba(184, 224, 210, 0.4); 
+    margin-bottom: 1.5em;         
+}
+#add-task {
+    position: absolute;
+    right: 20px;
+}
+#add-project {
+    position: absolute;
+    top: 3em;
+}
+
 .content {
     background: rgba(15, 31, 20, 0.55);
 }

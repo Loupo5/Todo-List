@@ -1,4 +1,5 @@
 import "./style.css"
+import "./dialog.css"
 import { Task, User } from "./main.js"
 
 const task1 = new Task("walk", "for weight loss")

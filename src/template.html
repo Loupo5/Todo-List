@@ -9,7 +9,39 @@
     <div class="wrapper">
         
         <div class="sidebar">
-
+            <div class="add">
+                <button id="add-task">Add Task<img src="svgs/star.svg" width="30px" height="30px"></button>
+                <dialog id="task-dialog">
+                    <div id="title-div">
+                        <label for="title">Title</label>
+                        <input id="title" type="text" name="task_title">
+                    </div>
+                    <div id="desc-div">
+                        <label for="description">Description</label>
+                        <input id="description" type="text" name="task_description">
+                    </div>
+                    <div id="duration-div">
+                        <label for="duration">Duration</label>
+                        <input id="duration" type="time" name="task_duration">
+                    </div>
+                    <fieldset id="difficulty-div">
+                        <legend>Difficulty</legend>
+                        <label>
+                            <input type="radio" name="task_difficulty" value="easy">
+                            Easy
+                        </label>
+                        <label>
+                            <input type="radio" name="task_difficulty" value="normal">
+                            Normal
+                        </label>
+                        <label>
+                            <input type="radio" name="task_difficulty" value="hard">
+                            Hard
+                        </label>
+                    </fieldset>
+                </dialog>
+                <button id="add-project">Create Project <img src="svgs/wand.svg" width="30px" height="30px"></button>
+            </div>
         </div>
         <div class="content">
 
