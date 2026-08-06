@@ -43,10 +43,12 @@
 }
 #close-task-btn {
     background: rgba(180, 160, 210, 0.7);
+    border-radius: 10px;
 }
 #add-task-btn {
     background: rgba(212, 162, 76, 0.85);
     margin-left: 1em;
+    border-radius: 10px;
 }
 
 #task-dialog label,

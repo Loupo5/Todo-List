@@ -1,5 +1,6 @@
 import "./style.css"
 import "./dialog.css"
+import "./project.css"
 import { Task, User, taskConfiguration } from "./main.js"
 
 const task1 = new Task("walk", "for weight loss")

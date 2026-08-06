@@ -1,0 +1,15 @@
+.content  {
+    width: 100%;
+    display: grid;
+    gap: 2em;
+    padding: 2em;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    align-content: start;
+}
+
+#project-container {
+    border-radius: 10px;
+    height: 10em;
+    background: rgba(255, 255, 255, 0.5);
+    transition: height 0.4s ease-in-out;
+}
