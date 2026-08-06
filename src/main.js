@@ -24,9 +24,12 @@ function taskConfiguration() {
         taskDialog.close()
     })
     confirmTaskBtn.addEventListener("click", () => {
+        const projectDiv = document.getElementById("project-container")
         const task = taskAdder("bicep", "gonna get them 40cm at least", "", "")
         console.log(task)
+        /*Create dom elements for each parameter and append them as children to ProjectDiv*/
         taskDialog.close()
+
     })
 }
 
