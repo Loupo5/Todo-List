@@ -34,6 +34,7 @@ function getInput() {
         taskDuration.value = ""
     }
     if (Number.isNaN(Number(taskDuration.value))) {
+        taskDuration.placeholder = "invalid"
         errorMessage.textContent = "Enter a valid number!"
         return
     }
@@ -53,34 +54,12 @@ function taskConfiguration() {
         taskDialog.close()
     })
     confirmTaskBtn.addEventListener("click", () => {
-        const task = getInput()
-        /*const taskTitle = document.getElementById("title")
-        const title = taskTitle.value
-        if (taskTitle.value === "") {
-            taskTitle.placeholder = "Enter title"
-            return 
-        }
-
-        const taskDesc = document.getElementById("description")
-        const description = taskDesc.value
-
-        const taskDuration = document.getElementById("duration")
-        const errorMessage = document.getElementById("error")
-        console.log(taskDuration.value)
-        if (taskDuration.value === "") {
-            taskDuration.value = ""
-        }
-        if (Number.isNaN(Number(taskDuration.value))) {
-            errorMessage.textContent = "Enter a valid number!"
+        const input = getInput()
+        if (!input) {
             return
         }
-        const duration = taskDuration.value
-
-        const taskDifficulty = document.querySelector("input[name='task_difficulty']:checked")
-        const difficulty = taskDifficulty.value
         
-        
-        const newTask = new Task(title, description, duration, difficulty)
+        const newTask = new Task(input.title, input.description, input.duration, input.difficulty)
         console.log(newTask)
         const projectDiv = document.getElementById("project-container")
         const task = taskAdder("bicep", "gonna get them 40cm at least", "", "")
