@@ -12,10 +12,26 @@ function taskAdder(title, description, duration, difficulty) {
 }
 
 const taskDialog = document.getElementById("task-dialog")
+const confirmTaskBtn = document.getElementById("add-task-btn")
+const closeTaskBtn = document.getElementById("close-task-btn")
 const addTask = document.getElementById("add-task")
-addTask.addEventListener("click", () => {
-    taskDialog.showModal()
-})
+
+function taskConfiguration() {
+    addTask.addEventListener("click", () => {
+        taskDialog.showModal()
+    })
+    closeTaskBtn.addEventListener("click", () => {
+        taskDialog.close()
+    })
+    confirmTaskBtn.addEventListener("click", () => {
+        const task = taskAdder("bicep", "gonna get them 40cm at least", "", "")
+        console.log(task)
+        taskDialog.close()
+    })
+}
+
+
+
 
 
 
@@ -32,7 +48,7 @@ class User {
         return this.level + 1
     }
 }
-export { Task, User }
+export { Task, User, taskConfiguration }
 
 
 
