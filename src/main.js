@@ -53,7 +53,8 @@ function taskConfiguration() {
         taskDialog.close()
     })
     confirmTaskBtn.addEventListener("click", () => {
-        const taskTitle = document.getElementById("title")
+        const task = getInput()
+        /*const taskTitle = document.getElementById("title")
         const title = taskTitle.value
         if (taskTitle.value === "") {
             taskTitle.placeholder = "Enter title"
