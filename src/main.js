@@ -24,6 +24,21 @@ function taskConfiguration() {
         taskDialog.close()
     })
     confirmTaskBtn.addEventListener("click", () => {
+        let taskTitle = document.getElementById("title")
+        let title = taskTitle.value
+
+        let taskDesc = document.getElementById("description")
+        let description = taskDesc.value
+
+        let taskDuration = document.getElementById("duration")
+        let duration = taskDuration.value
+
+        let taskDifficulty = document.querySelector("input[name='task_difficulty']:checked")
+        let difficulty = taskDifficulty.value
+        
+        
+        const newTask = new Task(title, description, duration, difficulty)
+        console.log(newTask)
         const projectDiv = document.getElementById("project-container")
         const task = taskAdder("bicep", "gonna get them 40cm at least", "", "")
         console.log(task)
