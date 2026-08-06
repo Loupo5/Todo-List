@@ -18,7 +18,7 @@
                     </div>
                     <div id="desc-div">
                         <label for="description">Description</label>
-                        <input id="description" type="text" name="task_description">
+                        <textarea id="description" type="textfield" name="task_description"></textarea>
                     </div>
                     <div id="duration-div">
                         <label for="duration">Duration</label>
@@ -39,6 +39,10 @@
                             Hard
                         </label>
                     </fieldset>
+                    <p class="task-btns">
+                        <button id="close-task-btn">Close</button>
+                        <button id="add-task-btn">Add</button>
+                    </p>
                 </dialog>
                 <button id="add-project">Create Project <img src="svgs/wand.svg" width="30px" height="30px"></button>
             </div>
