@@ -21,8 +21,9 @@
                         <textarea id="description" type="textfield" name="task_description"></textarea>
                     </div>
                     <div id="duration-div">
-                        <label for="duration">Duration</label>
-                        <input id="duration" type="time" name="task_duration">
+                        <label for="duration">Duration (minutes)</label>
+                        <input id="duration" type="tel" name="task_duration">
+                        <p id="error"></p>
                     </div>
                     <fieldset id="difficulty-div">
                         <legend>Difficulty</legend>

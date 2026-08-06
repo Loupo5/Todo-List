@@ -16,6 +16,35 @@ const confirmTaskBtn = document.getElementById("add-task-btn")
 const closeTaskBtn = document.getElementById("close-task-btn")
 const addTask = document.getElementById("add-task")
 
+function getInput() {
+    const taskTitle = document.getElementById("title")
+    const title = taskTitle.value
+    if (taskTitle.value === "") {
+        taskTitle.placeholder = "Enter title"
+        return 
+    }
+
+    const taskDesc = document.getElementById("description")
+    const description = taskDesc.value
+
+    const taskDuration = document.getElementById("duration")
+    const errorMessage = document.getElementById("error")
+    console.log(taskDuration.value)
+    if (taskDuration.value === "") {
+        taskDuration.value = ""
+    }
+    if (Number.isNaN(Number(taskDuration.value))) {
+        errorMessage.textContent = "Enter a valid number!"
+        return
+    }
+    const duration = taskDuration.value
+
+    const taskDifficulty = document.querySelector("input[name='task_difficulty']:checked")
+    const difficulty = taskDifficulty.value
+
+    return {title, description, duration, difficulty}
+}
+
 function taskConfiguration() {
     addTask.addEventListener("click", () => {
         taskDialog.showModal()
@@ -24,17 +53,30 @@ function taskConfiguration() {
         taskDialog.close()
     })
     confirmTaskBtn.addEventListener("click", () => {
-        let taskTitle = document.getElementById("title")
-        let title = taskTitle.value
+        const taskTitle = document.getElementById("title")
+        const title = taskTitle.value
+        if (taskTitle.value === "") {
+            taskTitle.placeholder = "Enter title"
+            return 
+        }
 
-        let taskDesc = document.getElementById("description")
-        let description = taskDesc.value
+        const taskDesc = document.getElementById("description")
+        const description = taskDesc.value
 
-        let taskDuration = document.getElementById("duration")
-        let duration = taskDuration.value
+        const taskDuration = document.getElementById("duration")
+        const errorMessage = document.getElementById("error")
+        console.log(taskDuration.value)
+        if (taskDuration.value === "") {
+            taskDuration.value = ""
+        }
+        if (Number.isNaN(Number(taskDuration.value))) {
+            errorMessage.textContent = "Enter a valid number!"
+            return
+        }
+        const duration = taskDuration.value
 
-        let taskDifficulty = document.querySelector("input[name='task_difficulty']:checked")
-        let difficulty = taskDifficulty.value
+        const taskDifficulty = document.querySelector("input[name='task_difficulty']:checked")
+        const difficulty = taskDifficulty.value
         
         
         const newTask = new Task(title, description, duration, difficulty)
