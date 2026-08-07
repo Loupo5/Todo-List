@@ -34,11 +34,10 @@
 #task-dialog p {
     grid-row: -2 / -1;
     grid-column: 1 / 2;
-    display: flex;
-    justify-content: flex-end;
+    margin-left: 4.5em;
 }
 #task-dialog p button {
-    padding: 5px;
+    padding: 10px;
     width: 5em;
 }
 #close-task-btn {
@@ -114,4 +113,10 @@
 }
 .task-btns button{
     margin-top: 0;
+}
+
+/* hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh */
+
+#proj-dialog {
+    background: rgba(255, 255, 255, 0.6)
 }

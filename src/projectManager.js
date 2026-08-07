@@ -1,4 +1,12 @@
-function projectManager() {
-    const projectDiv = document.getElementById("project-container")
+class Project {
+    constructor(title) {
+        this.title = title
+        this.tasks = []
+    }
 
+    addTask(task) {
+        this.tasks.push(task)
+    }
 }
+
+export { Project }

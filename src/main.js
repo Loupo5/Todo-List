@@ -1,3 +1,5 @@
+import { Project } from "./projectManager.js" 
+
 class Task {
     constructor(title, description, duration, difficulty) {
         this.title = title
@@ -46,6 +48,24 @@ function getInput() {
     return {title, description, duration, difficulty}
 }
 
+function getCurrentProject() {
+    let currProject = null
+    const project = document.getElementById("project-container")
+    project.addEventListener("click", () => {
+        currProject = project
+        return currProject
+    })
+    
+}
+
+function projectConfiguration() {
+    const addProject = document.getElementById("add-project")
+    const projDialog = document.getElementById("proj-dialog")
+    addProject.addEventListener("click", () => {
+        projDialog.showModal()
+    })
+}
+
 function taskConfiguration() {
     addTask.addEventListener("click", () => {
         taskDialog.showModal()
@@ -88,7 +108,7 @@ class User {
         return this.level + 1
     }
 }
-export { Task, User, taskConfiguration }
+export { Task, User, taskConfiguration, projectConfiguration }
 
 
 
