@@ -118,5 +118,39 @@
 /* hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh */
 
 #proj-dialog {
-    background: rgba(255, 255, 255, 0.6)
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    mask: url("./svgs/cloud.svg") no-repeat center;
+    mask-size: contain;
+
+    padding: 100px;
+    width: 25rem;
+    height: 25rem;
 }
+#proj-dialog div {
+    font-size: 1.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.5em;
+}
+#proj-dialog label {
+    color: #f5f5f5
+}
+#proj-dialog input {
+    background-color: rgba(212, 162, 76, 0.85);
+}
+#proj-priority legend {
+    color: #f5f5f5
+}
+#proj-priority {
+    font-size: 1.5em;
+    margin-left: 2em;
+    display: flex;
+    flex-direction: column;
+    border: none;
+}
+
