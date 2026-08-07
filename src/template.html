@@ -48,7 +48,7 @@
                 <button id="add-project">
                     Create Project <img src="svgs/wand.svg" width="30px" height="30px">
                 </button>
-                <dialog id="proj-dialog" open>
+                <dialog id="proj-dialog">
                     <div>
                         <label for="proj-title">Title</label>
                         <input id="proj-title" type="text" name="project_title">
@@ -56,21 +56,21 @@
                     <fieldset id="proj-priority">
                         <legend>Priority</legend>
                         <label>
-                            <input id="project-priority" type="radio" value="low">
+                            <input name="project-priority" type="radio" value="low">
                         Low
                         </label>
                         <label>
-                            <input id="project-priority" type="radio" value="medium">
+                            <input name="project-priority" type="radio" value="medium" checked>
                         Medium
                         </label>
                         <label>
-                            <input id="project-priority" type="radio" value="high">
+                            <input name="project-priority" type="radio" value="high">
                         High
                         </label>
                     </fieldset>
                     <div id="proj-btns">
-                        <button>Close</button>
-                        <button>Add</button>
+                        <button id="proj-close-btn">Close</button>
+                        <button id="proj-confirm-btn">Confirm</button>
                     </div>
                 </dialog>
             </div>

@@ -47,6 +47,18 @@ function getInput() {
 
     return {title, description, duration, difficulty}
 }
+function getProject() {
+    const projectTitleInput = document.getElementById("proj-title")
+    if (projectTitleInput.value === "") {
+        projectTitleInput.placeholder = "Input a title"
+        return 
+    }
+    const title = projectTitleInput.value
+
+    const priorityInput = document.querySelector("input[name='project-priority']")
+    const priority = priorityInput.value
+    return { title, priority }
+}
 
 function getCurrentProject() {
     let currProject = null
@@ -61,9 +73,21 @@ function getCurrentProject() {
 function projectConfiguration() {
     const addProject = document.getElementById("add-project")
     const projDialog = document.getElementById("proj-dialog")
+    const closeProjBtn = document.getElementById("proj-close-btn")
+    const confirmProjBtn = document.getElementById("proj-confirm-btn")
     addProject.addEventListener("click", () => {
         projDialog.showModal()
     })
+    closeProjBtn.addEventListener("click", () => {
+        projDialog.close()
+    })
+    confirmProjBtn.addEventListener("click", () => {
+        const input = getProject()
+        if (!input) return
+        console.log(input)
+        
+    })
+
 }
 
 function taskConfiguration() {
