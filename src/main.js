@@ -69,6 +69,7 @@ function getCurrentProject() {
     })
     
 }
+console.log(getCurrentProject())
 
 function projectConfiguration() {
     const content = document.querySelector(".content")
@@ -83,12 +84,19 @@ function projectConfiguration() {
         projDialog.close()
     })
     confirmProjBtn.addEventListener("click", () => {
+        projDialog.close()
         const input = getProject()
         if (!input) return
-        const project = document.createElement("button")
-        project.id = "project-container" 
-        project.textContent = input.title
-        content.appendChild(project)       
+        const project = new Project(input.title, input.priority)
+        const projectUI = document.createElement("button")
+        projectUI.id = "project-container" 
+        let currentProject = null
+        projectUI.textContent = project.title
+        projectUI.addEventListener("click", () => {
+            currentProject = project
+            console.log(currentProject)
+        })
+        content.appendChild(projectUI)  
     })
 
 }
@@ -107,11 +115,11 @@ function taskConfiguration() {
         }
         
         const newTask = new Task(input.title, input.description, input.duration, input.difficulty)
-        console.log(newTask)
+        
+
         const projectDiv = document.getElementById("project-container")
         const task = taskAdder("bicep", "gonna get them 40cm at least", "", "")
         console.log(task)
-        /*Create dom elements for each parameter and append them as children to ProjectDiv*/
         taskDialog.close()
 
     })
