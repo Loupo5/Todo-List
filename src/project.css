@@ -1,15 +1,23 @@
 .content  {
+    background: rgba(15, 31, 20, 0.55);
+    overflow: scroll;
     width: 100%;
     display: grid;
-    gap: 2em;
-    padding: 2em;
+    gap: 3em;
+    padding: 3em;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     align-content: start;
 }
 
 #project-container {
-    border-radius: 10px;
-    height: 10em;
+    font-size: 2em;
+    border-radius: 30px;
+    height: 5.5em;
     background: rgba(255, 255, 255, 0.5);
+    transform: scale(0.9);
+    transition: transform 0.4s ease-in-out
+}
+#project-container:hover {
+    transform: scale(1)
 }
 

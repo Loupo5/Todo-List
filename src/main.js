@@ -71,6 +71,7 @@ function getCurrentProject() {
 }
 
 function projectConfiguration() {
+    const content = document.querySelector(".content")
     const addProject = document.getElementById("add-project")
     const projDialog = document.getElementById("proj-dialog")
     const closeProjBtn = document.getElementById("proj-close-btn")
@@ -84,8 +85,10 @@ function projectConfiguration() {
     confirmProjBtn.addEventListener("click", () => {
         const input = getProject()
         if (!input) return
-        console.log(input)
-        
+        const project = document.createElement("button")
+        project.id = "project-container" 
+        project.textContent = input.title
+        content.appendChild(project)       
     })
 
 }
