@@ -1,4 +1,4 @@
-import { Project } from "./projectManager.js" 
+import { Project, createProject } from "./projectManager.js" 
 
 class Task {
     constructor(title, description, duration, difficulty) {
@@ -55,24 +55,15 @@ function getProject() {
     }
     const title = projectTitleInput.value
 
-    const priorityInput = document.querySelector("input[name='project-priority']")
+    const priorityInput = document.querySelector("input[name='project-priority']:checked")
     const priority = priorityInput.value
     return { title, priority }
 }
 
-function getCurrentProject() {
-    let currProject = null
-    const project = document.getElementById("project-container")
-    project.addEventListener("click", () => {
-        currProject = project
-        return currProject
-    })
-    
-}
+
 console.log(getCurrentProject())
 
 function projectConfiguration() {
-    const content = document.querySelector(".content")
     const addProject = document.getElementById("add-project")
     const projDialog = document.getElementById("proj-dialog")
     const closeProjBtn = document.getElementById("proj-close-btn")
@@ -87,16 +78,8 @@ function projectConfiguration() {
         projDialog.close()
         const input = getProject()
         if (!input) return
-        const project = new Project(input.title, input.priority)
-        const projectUI = document.createElement("button")
-        projectUI.id = "project-container" 
-        let currentProject = null
-        projectUI.textContent = project.title
-        projectUI.addEventListener("click", () => {
-            currentProject = project
-            console.log(currentProject)
-        })
-        content.appendChild(projectUI)  
+       
+        createProject(input.title, input.priority)
     })
 
 }
