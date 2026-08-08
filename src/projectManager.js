@@ -9,6 +9,44 @@ class Project {
         this.tasks.push(task)
     }
 }
+
+function renderProject() {
+    const dialog = document.querySelector(".project-tasks")
+    const closeBtn = document.createElement("button")
+    const projectContent = document.createElement("div")
+    projectContent.classList.add("project-content")
+    closeBtn.textContent = "Close"
+    closeBtn.classList.add("close-btn")
+    
+    for (let [index, item] of currentProject.tasks.entries()) {
+        const task = document.createElement("div")
+        task.classList.add("task")
+
+        const taskTitle = document.createElement("p")
+        taskTitle.textContent = item.title
+        task.appendChild(taskTitle)
+
+        const taskDescription = document.createElement("p")
+        taskDescription.textContent = `Description: ${item.description}`
+        task.appendChild(taskDescription)
+
+        const taskDuration = document.createElement("p")
+        taskDuration.textContent = `Duration: ${item.duration} min`
+        task.appendChild(taskDuration)
+
+        projectContent.appendChild(task)
+    }
+    dialog.appendChild(projectContent)
+    dialog.appendChild(closeBtn)
+
+    content.appendChild(dialog)
+
+    dialog.showModal()
+    closeBtn.addEventListener("click", () => {
+        dialog.close()
+    })
+}
+
 let currentProject = null
 let currentProjectUI = null
 let projects = []
@@ -37,7 +75,8 @@ function createProject(title, priority) {
         currentProject = project
 
         if (!project.tasks[0]) return 
-        const dialog = document.querySelector(".project-tasks")
+        renderProject()
+        /*const dialog = document.querySelector(".project-tasks")
         const closeBtn = document.createElement("button")
         const projectContent = document.createElement("div")
         projectContent.classList.add("project-content")
@@ -70,7 +109,7 @@ function createProject(title, priority) {
         dialog.showModal()
         closeBtn.addEventListener("click", () => {
             dialog.close()
-        })
+        })*/
 
     })  
     return project
