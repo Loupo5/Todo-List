@@ -10,6 +10,7 @@ class Project {
     }
 }
 let currentProject = null
+let currentProjectUI = null
 let projects = []
 const content = document.querySelector(".content")
 function createProject(title, priority) {
@@ -28,7 +29,13 @@ function createProject(title, priority) {
     projectUI.textContent = project.title
     content.appendChild(projectUI)  
     projectUI.addEventListener("click", () => {
+        if (currentProjectUI) {
+            currentProjectUI.classList.remove("current-project")
+        }
+        currentProjectUI = projectUI
+        projectUI.classList.add("current-project")
         currentProject = project
+
         if (!project.tasks[0]) return 
         const dialog = document.querySelector(".project-tasks")
         const closeBtn = document.createElement("button")
