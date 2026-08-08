@@ -66,6 +66,8 @@ function projectConfiguration() {
     const projDialog = document.getElementById("proj-dialog")
     const closeProjBtn = document.getElementById("proj-close-btn")
     const confirmProjBtn = document.getElementById("proj-confirm-btn")
+
+    const currentProject = getCurrentProject()
     addProject.addEventListener("click", () => {
         projDialog.showModal()
     })

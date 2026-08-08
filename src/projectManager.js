@@ -51,6 +51,8 @@ function renderProject() {
 
     closeBtn.addEventListener("click", () => {
         dialog.close()
+        const addProjectBtn = document.getElementById("add-project")
+        addProjectBtn.disabled = false
     })
 }
 
@@ -59,6 +61,7 @@ let currentProjectUI = null
 let projects = []
 const content = document.querySelector(".content")
 function createProject(title, priority) {
+
     const project = new Project(title, priority)
     projects.push(project)
     const projectUI = document.createElement("button")
@@ -97,6 +100,9 @@ function createProject(title, priority) {
         if (!project.tasks[0]) return 
         renderProject()
         dialog.show()
+        const addProjectBtn = document.getElementById("add-project")
+        addProjectBtn.disabled = true
+        
         
 
     })  
