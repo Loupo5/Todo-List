@@ -24,12 +24,17 @@ function createProject(title, priority) {
         currentProject = project
         if (!project.tasks[0]) return 
         const dialog = document.createElement("dialog")
+        dialog.classList.add("project-tasks")
         dialog.show()
+        const closeBtn = document.createElement("button")
+        closeBtn.textContent = "close"
+        closeBtn.classList.add("close-btn")
         const task = document.createElement("div")
         const taskTitle = document.createElement("p")
         taskTitle.textContent = project.tasks[0].title
         task.appendChild(taskTitle)
         dialog.appendChild(task)
+        dialog.appendChild(closeBtn)
         content.appendChild(dialog)
 
     })  

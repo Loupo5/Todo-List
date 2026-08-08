@@ -21,3 +21,30 @@
     transform: scale(1)
 }
 
+.project-tasks {
+    position: fixed;
+    top: 49%;
+    left: 64%;
+    width: 58%;
+    height: 85%;
+    transform: translate(-50%, -50%);
+
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.8)
+
+}
+
+.close-btn {
+    position: absolute;
+    right: 37%;
+    bottom: 10%;
+
+    font-size: 2em;
+    padding: 10px;
+    width: 8em;
+    border-radius: 30px;
+
+    background-color: rgba(180, 160, 210, 0.7);
+
+}
+
