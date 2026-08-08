@@ -43,7 +43,7 @@ function createProject(title, priority) {
             task.appendChild(taskDescription)
 
             const taskDuration = document.createElement("p")
-            taskDuration.textContent = `Duration: ${item.duration}`
+            taskDuration.textContent = `Duration: ${item.duration} min`
             task.appendChild(taskDuration)
 
             projectContent.appendChild(task)

@@ -14,11 +14,11 @@
                 <dialog id="task-dialog">
                     <div id="title-div">
                         <label for="title">Title</label>
-                        <input id="title" type="text" name="task_title">
+                        <input id="title" type="text" name="task_title" maxlength="18">
                     </div>
                     <div id="desc-div">
                         <label for="description">Description</label>
-                        <textarea id="description" type="textfield" name="task_description"></textarea>
+                        <textarea id="description" type="textfield" name="task_description" maxlength="250"></textarea>
                     </div>
                     <div id="duration-div">
                         <label for="duration">Duration (minutes)</label>
@@ -76,10 +76,7 @@
             </div>
         </div>
         <div class="content">
-            <button id="project-container">
-                My Project
-            </button>
-
+            
             <dialog class="project-tasks"></dialog>
             
         </div>
