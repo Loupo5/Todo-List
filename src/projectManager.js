@@ -33,9 +33,19 @@ function createProject(title, priority) {
         for (let [index, item] of currentProject.tasks.entries()) {
             const task = document.createElement("div")
             task.classList.add("task")
+
             const taskTitle = document.createElement("p")
             taskTitle.textContent = item.title
             task.appendChild(taskTitle)
+
+            const taskDescription = document.createElement("p")
+            taskDescription.textContent = `Description: ${item.description}`
+            task.appendChild(taskDescription)
+
+            const taskDuration = document.createElement("p")
+            taskDuration.textContent = `Duration: ${item.duration}`
+            task.appendChild(taskDuration)
+
             projectContent.appendChild(task)
         }
         dialog.appendChild(projectContent)
