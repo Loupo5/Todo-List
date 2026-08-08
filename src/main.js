@@ -61,8 +61,6 @@ function getProject() {
 }
 
 
-console.log(getCurrentProject())
-
 function projectConfiguration() {
     const addProject = document.getElementById("add-project")
     const projDialog = document.getElementById("proj-dialog")
@@ -101,8 +99,6 @@ function taskConfiguration() {
         
 
         const projectDiv = document.getElementById("project-container")
-        const task = taskAdder("bicep", "gonna get them 40cm at least", "", "")
-        console.log(task)
         taskDialog.close()
 
     })
