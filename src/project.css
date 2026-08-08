@@ -10,6 +10,10 @@
 }
 
 #project-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     font-size: 2em;
     border-radius: 30px;
     height: 5.5em;
@@ -111,5 +115,15 @@
 #project-container.high-priority {
     background: rgba(155, 35, 65, 0.9);
     border: none;
+}
+
+.delete {
+    color: white;
+    background: black;
+    border-radius: 50%;
+    width: 1.5em;
+    height: 1.5em;
+    font-size: 1.2em;
+    margin-top: 10px;
 }
 

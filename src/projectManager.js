@@ -73,6 +73,13 @@ function createProject(title, priority) {
     }
     projectUI.id = "project-container" 
     projectUI.textContent = project.title
+    const deleteProjectBtn = document.createElement("button")
+    deleteProjectBtn.textContent = "x"
+    deleteProjectBtn.classList.add("delete")
+    projectUI.appendChild(deleteProjectBtn)
+    deleteProjectBtn.addEventListener("click", () => {
+        projectUI.remove()
+    })
     content.appendChild(projectUI)  
 
     const dialog = document.querySelector(".project-tasks")

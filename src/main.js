@@ -67,7 +67,6 @@ function projectConfiguration() {
     const closeProjBtn = document.getElementById("proj-close-btn")
     const confirmProjBtn = document.getElementById("proj-confirm-btn")
 
-    const currentProject = getCurrentProject()
     addProject.addEventListener("click", () => {
         projDialog.showModal()
     })
@@ -127,16 +126,8 @@ function taskConfiguration() {
 
 
 
-class User {
-    constructor(name, level) {
-        this.name = name
-        this.level = level
-    }
-    levelUp(level) {
-        return this.level + 1
-    }
-}
-export { Task, User, taskConfiguration, projectConfiguration }
+
+export { Task, taskConfiguration, projectConfiguration }
 
 
 
