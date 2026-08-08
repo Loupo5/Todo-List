@@ -1,4 +1,4 @@
-import { Project, createProject } from "./projectManager.js" 
+import { Project, createProject, getCurrentProject } from "./projectManager.js" 
 
 class Task {
     constructor(title, description, duration, difficulty) {
@@ -73,10 +73,10 @@ function projectConfiguration() {
         projDialog.close()
     })
     confirmProjBtn.addEventListener("click", () => {
-        projDialog.close()
         const input = getProject()
         if (!input) return
-       
+        projDialog.close()
+
         createProject(input.title, input.priority)
     })
 
@@ -94,12 +94,15 @@ function taskConfiguration() {
         if (!input) {
             return
         }
-        
+        taskDialog.close()
+
         const newTask = new Task(input.title, input.description, input.duration, input.difficulty)
-        
+        const currentProject = getCurrentProject()
+        if (!currentProject) return
+        currentProject.addTask(newTask)
+        console.log(currentProject)
 
         const projectDiv = document.getElementById("project-container")
-        taskDialog.close()
 
     })
 }
