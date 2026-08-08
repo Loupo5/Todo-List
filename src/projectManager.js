@@ -41,7 +41,6 @@ function renderProject() {
 
     content.appendChild(dialog)
 
-    dialog.showModal()
     closeBtn.addEventListener("click", () => {
         dialog.close()
     })
@@ -54,9 +53,7 @@ const content = document.querySelector(".content")
 function createProject(title, priority) {
     const project = new Project(title, priority)
     projects.push(project)
-    console.log(projects)
     const projectUI = document.createElement("button")
-    console.log(project.priority)
     if (project.priority == "low") {
         projectUI.classList.add("low-priority")
     }
@@ -66,6 +63,21 @@ function createProject(title, priority) {
     projectUI.id = "project-container" 
     projectUI.textContent = project.title
     content.appendChild(projectUI)  
+
+    const dialog = document.querySelector(".project-tasks")
+
+    const addTaskBtn = document.getElementById("add-task-btn")
+    addTaskBtn.addEventListener("click", () => {
+        if (currentProjectUI) {
+            currentProjectUI.classList.remove("current-project")
+        }
+        currentProjectUI = projectUI
+        projectUI.classList.add("current-project")
+        currentProject = project
+
+        if (!project.tasks[0]) return 
+        renderProject()
+    })
     projectUI.addEventListener("click", () => {
         if (currentProjectUI) {
             currentProjectUI.classList.remove("current-project")
@@ -76,6 +88,7 @@ function createProject(title, priority) {
 
         if (!project.tasks[0]) return 
         renderProject()
+        dialog.show()
         /*const dialog = document.querySelector(".project-tasks")
         const closeBtn = document.createElement("button")
         const projectContent = document.createElement("div")
