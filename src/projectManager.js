@@ -17,6 +17,13 @@ function createProject(title, priority) {
     projects.push(project)
     console.log(projects)
     const projectUI = document.createElement("button")
+    console.log(project.priority)
+    if (project.priority == "low") {
+        projectUI.classList.add("low-priority")
+    }
+    else if (project.priority == "high") {
+        projectUI.classList.add("high-priority")
+    }
     projectUI.id = "project-container" 
     projectUI.textContent = project.title
     content.appendChild(projectUI)  

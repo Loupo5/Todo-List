@@ -93,3 +93,12 @@
     background: inherit;
 }
 
+#project-container.low-priority {
+    background: rgba(82, 105, 60, 0.85);
+    border: none;
+}
+#project-container.high-priority {
+    background: rgba(155, 35, 65, 0.9);
+    border: none;
+}
+
