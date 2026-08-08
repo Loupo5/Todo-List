@@ -23,25 +23,30 @@ function createProject(title, priority) {
     projectUI.addEventListener("click", () => {
         currentProject = project
         if (!project.tasks[0]) return 
-        const dialog = document.createElement("dialog")
-        dialog.classList.add("project-tasks")
-        dialog.show()
+        const dialog = document.querySelector(".project-tasks")
         const closeBtn = document.createElement("button")
-        closeBtn.textContent = "close"
+        const projectContent = document.createElement("div")
+        projectContent.classList.add("project-content")
+        closeBtn.textContent = "Close"
         closeBtn.classList.add("close-btn")
-        closeBtn.addEventListener("click", () => {
-            dialog.close()
-        })
+        
         for (let [index, item] of currentProject.tasks.entries()) {
             const task = document.createElement("div")
             task.classList.add("task")
             const taskTitle = document.createElement("p")
             taskTitle.textContent = item.title
             task.appendChild(taskTitle)
-            dialog.appendChild(task)
-            dialog.appendChild(closeBtn)
+            projectContent.appendChild(task)
         }
+        dialog.appendChild(projectContent)
+        dialog.appendChild(closeBtn)
+
         content.appendChild(dialog)
+
+        dialog.showModal()
+        closeBtn.addEventListener("click", () => {
+            dialog.close()
+        })
 
     })  
     return project
