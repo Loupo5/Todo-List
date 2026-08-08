@@ -90,6 +90,19 @@ function taskConfiguration() {
         taskDialog.close()
     })
     confirmTaskBtn.addEventListener("click", () => {
+        const currentProject = getCurrentProject()
+        if (!currentProject) {
+            const errorMsg = document.createElement("dialog")
+            errorMsg.classList.add("error")
+            errorMsg.textContent = "Error, no project selected!!"
+            document.body.appendChild(errorMsg)
+            errorMsg.showModal()
+            setTimeout(() => {
+                errorMsg.close();
+                errorMsg.remove();
+            }, 2000);
+            return 
+        }
         const input = getInput()
         if (!input) {
             return
@@ -97,13 +110,9 @@ function taskConfiguration() {
         taskDialog.close()
 
         const newTask = new Task(input.title, input.description, input.duration, input.difficulty)
-        const currentProject = getCurrentProject()
-        if (!currentProject) return
+        
         currentProject.addTask(newTask)
         console.log(currentProject)
-
-        const projectDiv = document.getElementById("project-container")
-
     })
 }
 
