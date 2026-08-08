@@ -29,12 +29,18 @@ function createProject(title, priority) {
         const closeBtn = document.createElement("button")
         closeBtn.textContent = "close"
         closeBtn.classList.add("close-btn")
-        const task = document.createElement("div")
-        const taskTitle = document.createElement("p")
-        taskTitle.textContent = project.tasks[0].title
-        task.appendChild(taskTitle)
-        dialog.appendChild(task)
-        dialog.appendChild(closeBtn)
+        closeBtn.addEventListener("click", () => {
+            dialog.close()
+        })
+        for (let [index, item] of currentProject.tasks.entries()) {
+            const task = document.createElement("div")
+            task.classList.add("task")
+            const taskTitle = document.createElement("p")
+            taskTitle.textContent = item.title
+            task.appendChild(taskTitle)
+            dialog.appendChild(task)
+            dialog.appendChild(closeBtn)
+        }
         content.appendChild(dialog)
 
     })  
