@@ -22,7 +22,16 @@ function createProject(title, priority) {
     content.appendChild(projectUI)  
     projectUI.addEventListener("click", () => {
         currentProject = project
-        console.log(currentProject)
+        if (!project.tasks[0]) return 
+        const dialog = document.createElement("dialog")
+        dialog.show()
+        const task = document.createElement("div")
+        const taskTitle = document.createElement("p")
+        taskTitle.textContent = project.tasks[0].title
+        task.appendChild(taskTitle)
+        dialog.appendChild(task)
+        content.appendChild(dialog)
+
     })  
     return project
 }
