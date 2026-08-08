@@ -58,6 +58,12 @@
     background-color: rgba(180, 160, 210, 0.7);
 
 }
+.task.easy-difficulty {
+    background: rgba(82, 105, 60, 0.85)
+}
+.task.hard-difficulty {
+    background: rgba(155, 35, 65, 0.9);
+}
 .task {
     display: flex;
     flex-direction: column;

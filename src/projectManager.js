@@ -33,6 +33,14 @@ function renderProject() {
         const taskDuration = document.createElement("p")
         taskDuration.textContent = `Duration: ${item.duration} min`
         task.appendChild(taskDuration)
+        console.log(item.difficulty)
+
+        if (item.difficulty == "easy") {
+            task.classList.add("easy-difficulty")
+        }
+        else if (item.difficulty == "hard") {
+            task.classList.add("hard-difficulty")
+        }
 
         projectContent.appendChild(task)
     }
@@ -89,40 +97,7 @@ function createProject(title, priority) {
         if (!project.tasks[0]) return 
         renderProject()
         dialog.show()
-        /*const dialog = document.querySelector(".project-tasks")
-        const closeBtn = document.createElement("button")
-        const projectContent = document.createElement("div")
-        projectContent.classList.add("project-content")
-        closeBtn.textContent = "Close"
-        closeBtn.classList.add("close-btn")
         
-        for (let [index, item] of currentProject.tasks.entries()) {
-            const task = document.createElement("div")
-            task.classList.add("task")
-
-            const taskTitle = document.createElement("p")
-            taskTitle.textContent = item.title
-            task.appendChild(taskTitle)
-
-            const taskDescription = document.createElement("p")
-            taskDescription.textContent = `Description: ${item.description}`
-            task.appendChild(taskDescription)
-
-            const taskDuration = document.createElement("p")
-            taskDuration.textContent = `Duration: ${item.duration} min`
-            task.appendChild(taskDuration)
-
-            projectContent.appendChild(task)
-        }
-        dialog.appendChild(projectContent)
-        dialog.appendChild(closeBtn)
-
-        content.appendChild(dialog)
-
-        dialog.showModal()
-        closeBtn.addEventListener("click", () => {
-            dialog.close()
-        })*/
 
     })  
     return project
