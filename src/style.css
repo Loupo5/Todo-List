@@ -92,3 +92,16 @@ button {
 button:hover {
     transform: scale(1.1);
 }
+
+#dragon {
+    position: absolute;
+    bottom: -4em;
+    left: 3em;
+    color: purple;
+    transition: transform 0.3s ease-in-out;
+    z-index: -1;
+}
+#dragon:hover {
+    transform: scale(1.1);
+
+}

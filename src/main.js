@@ -1,4 +1,4 @@
-import { Project, createProject, getCurrentProject, getProjects } from "./projectManager.js" 
+import { Project, createProject, getCurrentProject, getProjects, saveProjects } from "./projectManager.js" 
 
 class Task {
     constructor(title, description, duration, difficulty) {
@@ -112,8 +112,9 @@ function taskConfiguration() {
 
         const newTask = new Task(input.title, input.description, input.duration, input.difficulty)
         const currentProject = getCurrentProject()
-        console.log(currentProject)
         currentProject.addTask(newTask)
+        const projects = getProjects()
+        saveProjects()
     })
 }
 

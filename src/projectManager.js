@@ -14,10 +14,80 @@ let currentProject = null
 let currentProjectUI = null
 let projects = []
 
+function createProjectsOnLoad(project) {
+    const projectUI = document.createElement("button")
+    if (project.priority == "low") {
+        projectUI.classList.add("low-priority")
+    }
+    else if (project.priority == "high") {
+        projectUI.classList.add("high-priority")
+    }
+    projectUI.id = "project-container" 
+    projectUI.textContent = project.title
+    const deleteProjectBtn = document.createElement("button")
+    deleteProjectBtn.textContent = "x"
+    deleteProjectBtn.classList.add("delete")
+    projectUI.appendChild(deleteProjectBtn)
+
+    deleteProjectBtn.addEventListener("click", (e) => {
+        e.stopPropagation()
+        const index = projects.indexOf(project)
+        deleteInstance(projectUI, projects, index) 
+        saveProjects() 
+    })
+
+    content.appendChild(projectUI)  
+
+    const dialog = document.querySelector(".project-tasks")
+
+    const addTaskBtn = document.getElementById("add-task-btn")
+    addTaskBtn.addEventListener("click", () => { 
+        renderProject()
+    })
+
+    projectUI.addEventListener("click", () => {
+        if (currentProjectUI) {
+            currentProjectUI.classList.remove("current-project")
+        }
+        currentProjectUI = projectUI
+        projectUI.classList.add("current-project")
+        currentProject = project
+
+        if (!project.tasks[0]) return 
+        renderProject()
+        dialog.show()
+        const addProjectBtn = document.getElementById("add-project")
+        addProjectBtn.disabled = true
+    })    
+}
+
 function deleteInstance(UI, data, index) {
     UI.remove()
     data.splice(index, 1)
 }      
+
+function saveProjects() {
+    localStorage.setItem("projects", JSON.stringify(projects))
+}
+
+function loadProjects() {
+    const savedProjects = localStorage.getItem("projects")
+
+    if (!savedProjects) return
+
+    const data = JSON.parse(savedProjects)
+
+    data.forEach(projectData => {
+        createProject(projectData.title, projectData.priority)
+        /*const project = new Project(projectData.title, projectData.priority)
+
+        project.tasks = projectData.tasks
+
+        projects.push(project)
+
+        createProjectsOnLoad(project)*/
+    }) 
+}
 
 function renderProject() {
     const dialog = document.querySelector(".project-tasks")
@@ -26,6 +96,9 @@ function renderProject() {
     projectContent.classList.add("project-content")
     closeBtn.textContent = "Close"
     closeBtn.classList.add("close-btn")
+
+    currentProject = getCurrentProject()
+    if (!currentProject) return
     
     for (let [index, item] of currentProject.tasks.entries()) {
         const task = document.createElement("div")
@@ -51,6 +124,7 @@ function renderProject() {
     
         deleteBtn.addEventListener("click", () => {
             deleteInstance(task, currentProject.tasks, index)
+            saveProjects()
         })
 
         if (item.difficulty == "easy") {
@@ -80,6 +154,8 @@ function createProject(title, priority) {
 
     const project = new Project(title, priority)
     projects.push(project)
+    saveProjects()
+
     const projectUI = document.createElement("button")
     if (project.priority == "low") {
         projectUI.classList.add("low-priority")
@@ -97,7 +173,8 @@ function createProject(title, priority) {
     deleteProjectBtn.addEventListener("click", (e) => {
         e.stopPropagation()
         const index = projects.indexOf(project)
-        deleteInstance(projectUI, projects, index)  
+        deleteInstance(projectUI, projects, index) 
+        saveProjects() 
     })
 
     content.appendChild(projectUI)  
@@ -126,6 +203,7 @@ function createProject(title, priority) {
         
 
     })  
+    
     return project
 }
 function getProjects() {
@@ -135,4 +213,4 @@ function getCurrentProject() {
     return currentProject
 }
 
-export { Project, createProject, getCurrentProject, getProjects }
+export { Project, createProject, getCurrentProject, getProjects, saveProjects, loadProjects }
