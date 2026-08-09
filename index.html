@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+<script defer src="main.js"></script></head>
+<body> 
+    <div class="wrapper">
+        
+        <div class="sidebar">
+            <div class="add">
+                <button id="add-task">Add Task<img src="95c729ae62bf482e3685.svg" width="30px" height="30px"></button>
+                <dialog id="task-dialog">
+                    <div id="title-div">
+                        <label for="title">Title</label>
+                        <input id="title" type="text" name="task_title" maxlength="18">
+                    </div>
+                    <div id="desc-div">
+                        <label for="description">Description</label>
+                        <textarea id="description" type="textfield" name="task_description" maxlength="250"></textarea>
+                    </div>
+                    <div id="duration-div">
+                        <label for="duration">Duration (minutes)</label>
+                        <input id="duration" type="tel" name="task_duration" maxlength="3">
+                        <p id="error"></p>
+                    </div>
+                    <fieldset id="difficulty-div">
+                        <legend>Difficulty</legend>
+                        <label>
+                            <input type="radio" name="task_difficulty" value="easy">
+                            Easy
+                        </label>
+                        <label>
+                            <input type="radio" checked name="task_difficulty" value="normal">
+                            Normal
+                        </label>
+                        <label>
+                            <input type="radio" name="task_difficulty" value="hard">
+                            Hard
+                        </label>
+                    </fieldset>
+                    <p class="task-btns">
+                        <button id="close-task-btn">Close</button>
+                        <button id="add-task-btn">Add</button>
+                    </p>
+                </dialog>
+                <button id="add-project">
+                    Create Project <img src="88abd9b6fa4d74e3179f.svg" width="30px" height="30px">
+                </button>
+                <dialog id="proj-dialog">
+                    <div>
+                        <label for="proj-title">Title</label>
+                        <input id="proj-title" type="text" name="project_title" maxlength="15">
+                    </div>
+                    <fieldset id="proj-priority">
+                        <legend>Priority</legend>
+                        <label>
+                            <input name="project-priority" type="radio" value="low">
+                        Low
+                        </label>
+                        <label>
+                            <input name="project-priority" type="radio" value="medium" checked>
+                        Medium
+                        </label>
+                        <label>
+                            <input name="project-priority" type="radio" value="high">
+                        High
+                        </label>
+                    </fieldset>
+                    <div id="proj-btns">
+                        <button id="proj-close-btn">Close</button>
+                        <button id="proj-confirm-btn">Confirm</button>
+                    </div>
+                </dialog>
+                <img src="0eb98ef0291911a519e5.svg" width="80%" height="80%" id="dragon">
+            </div>
+        </div>
+        <div class="content">
+            
+            <dialog class="project-tasks"></dialog>
+            
+        </div>
+    </div>
+</body>
+</html>
