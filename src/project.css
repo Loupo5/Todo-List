@@ -1,6 +1,7 @@
 .content  {
     background: rgba(15, 31, 20, 0.55);
     overflow: scroll;
+    scrollbar-width: none;
     width: 100%;
     display: grid;
     gap: 3em;

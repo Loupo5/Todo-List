@@ -14,52 +14,6 @@ let currentProject = null
 let currentProjectUI = null
 let projects = []
 
-function createProjectsOnLoad(project) {
-    const projectUI = document.createElement("button")
-    if (project.priority == "low") {
-        projectUI.classList.add("low-priority")
-    }
-    else if (project.priority == "high") {
-        projectUI.classList.add("high-priority")
-    }
-    projectUI.id = "project-container" 
-    projectUI.textContent = project.title
-    const deleteProjectBtn = document.createElement("button")
-    deleteProjectBtn.textContent = "x"
-    deleteProjectBtn.classList.add("delete")
-    projectUI.appendChild(deleteProjectBtn)
-
-    deleteProjectBtn.addEventListener("click", (e) => {
-        e.stopPropagation()
-        const index = projects.indexOf(project)
-        deleteInstance(projectUI, projects, index) 
-        saveProjects() 
-    })
-
-    content.appendChild(projectUI)  
-
-    const dialog = document.querySelector(".project-tasks")
-
-    const addTaskBtn = document.getElementById("add-task-btn")
-    addTaskBtn.addEventListener("click", () => { 
-        renderProject()
-    })
-
-    projectUI.addEventListener("click", () => {
-        if (currentProjectUI) {
-            currentProjectUI.classList.remove("current-project")
-        }
-        currentProjectUI = projectUI
-        projectUI.classList.add("current-project")
-        currentProject = project
-
-        if (!project.tasks[0]) return 
-        renderProject()
-        dialog.show()
-        const addProjectBtn = document.getElementById("add-project")
-        addProjectBtn.disabled = true
-    })    
-}
 
 function deleteInstance(UI, data, index) {
     UI.remove()
@@ -79,13 +33,6 @@ function loadProjects() {
 
     data.forEach(projectData => {
         createProject(projectData.title, projectData.priority)
-        /*const project = new Project(projectData.title, projectData.priority)
-
-        project.tasks = projectData.tasks
-
-        projects.push(project)
-
-        createProjectsOnLoad(project)*/
     }) 
 }
 
