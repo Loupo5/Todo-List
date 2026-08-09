@@ -89,10 +89,10 @@ function createProject(title, priority) {
     deleteProjectBtn.textContent = "x"
     deleteProjectBtn.classList.add("delete")
     projectUI.appendChild(deleteProjectBtn)
-    deleteProjectBtn.addEventListener("click", () => {
+    deleteProjectBtn.addEventListener("click", (e) => {
+        e.stopPropagation()
         const index = projects.indexOf(project)
-        deleteInstance(projectUI, projects, index)
-        
+        deleteInstance(projectUI, projects, index)        
     })
     content.appendChild(projectUI)  
 
