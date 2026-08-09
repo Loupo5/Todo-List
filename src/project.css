@@ -85,6 +85,7 @@
     transition: height 0.4s ease-in-out,
                 transform 0.4s ease-in-out;
     overflow: scroll;
+    scrollbar-width: none;
 }
 .task:hover {
     transform: scale(1.05);
@@ -99,13 +100,20 @@
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1.5em;
     padding: 1.5em;
-    overflow: scroll;
+    overflow-y: auto;
 
     height: 75%;
     width: 100%;
+    
     position: absolute;
     top: 0;
     background: inherit;
+}
+
+.description {
+    overflow-wrap: anywhere;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 #project-container.low-priority {

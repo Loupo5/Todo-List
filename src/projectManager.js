@@ -36,6 +36,7 @@ function renderProject() {
         task.appendChild(taskTitle)
 
         const taskDescription = document.createElement("p")
+        taskDescription.classList.add("description")
         taskDescription.textContent = `Description: ${item.description}`
         task.appendChild(taskDescription)
 
@@ -96,8 +97,9 @@ function createProject(title, priority) {
     deleteProjectBtn.addEventListener("click", (e) => {
         e.stopPropagation()
         const index = projects.indexOf(project)
-        deleteInstance(projectUI, projects, index)        
+        deleteInstance(projectUI, projects, index)  
     })
+
     content.appendChild(projectUI)  
 
     const dialog = document.querySelector(".project-tasks")
@@ -106,7 +108,7 @@ function createProject(title, priority) {
     addTaskBtn.addEventListener("click", () => { 
         renderProject()
     })
-    
+
     projectUI.addEventListener("click", () => {
         if (currentProjectUI) {
             currentProjectUI.classList.remove("current-project")
