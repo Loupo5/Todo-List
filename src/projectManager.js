@@ -9,6 +9,11 @@ class Project {
         this.tasks.push(task)
     }
 }
+
+let currentProject = null
+let currentProjectUI = null
+let projects = []
+
 function deleteInstance(UI, data, index) {
     UI.remove()
     data.splice(index, 1)
@@ -68,9 +73,7 @@ function renderProject() {
     })
 }
 
-let currentProject = null
-let currentProjectUI = null
-let projects = []
+
 const content = document.querySelector(".content")
 function createProject(title, priority) {
 
@@ -89,6 +92,7 @@ function createProject(title, priority) {
     deleteProjectBtn.textContent = "x"
     deleteProjectBtn.classList.add("delete")
     projectUI.appendChild(deleteProjectBtn)
+
     deleteProjectBtn.addEventListener("click", (e) => {
         e.stopPropagation()
         const index = projects.indexOf(project)
@@ -99,17 +103,10 @@ function createProject(title, priority) {
     const dialog = document.querySelector(".project-tasks")
 
     const addTaskBtn = document.getElementById("add-task-btn")
-    addTaskBtn.addEventListener("click", () => {
-        if (currentProjectUI) {
-            currentProjectUI.classList.remove("current-project")
-        }
-        currentProjectUI = projectUI
-        projectUI.classList.add("current-project")
-        currentProject = project
-
-        if (!project.tasks[0]) return 
+    addTaskBtn.addEventListener("click", () => { 
         renderProject()
     })
+    
     projectUI.addEventListener("click", () => {
         if (currentProjectUI) {
             currentProjectUI.classList.remove("current-project")

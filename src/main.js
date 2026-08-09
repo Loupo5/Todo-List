@@ -84,12 +84,6 @@ function projectConfiguration() {
 
 function taskConfiguration() {
     addTask.addEventListener("click", () => {
-        taskDialog.showModal()
-    })
-    closeTaskBtn.addEventListener("click", () => {
-        taskDialog.close()
-    })
-    confirmTaskBtn.addEventListener("click", () => {
         const currentProject = getCurrentProject()
         if (!currentProject || getProjects().length == 0) {
             const errorMsg = document.createElement("dialog")
@@ -100,9 +94,16 @@ function taskConfiguration() {
             setTimeout(() => {
                 errorMsg.close();
                 errorMsg.remove();
-            }, 2000);
+            }, 1500);
             return 
         }
+        taskDialog.showModal()
+    })
+    closeTaskBtn.addEventListener("click", () => {
+        taskDialog.close()
+    })
+    confirmTaskBtn.addEventListener("click", () => {
+        
         const input = getInput()
         if (!input) {
             return
@@ -110,6 +111,8 @@ function taskConfiguration() {
         taskDialog.close()
 
         const newTask = new Task(input.title, input.description, input.duration, input.difficulty)
+        const currentProject = getCurrentProject()
+        console.log(currentProject)
         currentProject.addTask(newTask)
     })
 }
