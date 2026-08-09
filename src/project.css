@@ -119,11 +119,18 @@
 
 .delete {
     color: white;
+    border: none;
     background: black;
     border-radius: 50%;
     width: 1.5em;
     height: 1.5em;
     font-size: 1.2em;
     margin-top: 10px;
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
+}
+.delete:hover {
+    transform: scale(1.05);
+    background: color-mix(in srgb, black 90%, red)
 }
 

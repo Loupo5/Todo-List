@@ -9,6 +9,10 @@ class Project {
         this.tasks.push(task)
     }
 }
+function deleteInstance(UI, data, index) {
+    UI.remove()
+    data.splice(index, 1)
+}      
 
 function renderProject() {
     const dialog = document.querySelector(".project-tasks")
@@ -33,7 +37,15 @@ function renderProject() {
         const taskDuration = document.createElement("p")
         taskDuration.textContent = `Duration: ${item.duration} min`
         task.appendChild(taskDuration)
-        console.log(item.difficulty)
+
+        const deleteBtn = document.createElement("button")
+        deleteBtn.textContent = "x"
+        deleteBtn.classList.add("delete")
+        task.appendChild(deleteBtn)
+    
+        deleteBtn.addEventListener("click", () => {
+            deleteInstance(task, currentProject.tasks, index)
+        })
 
         if (item.difficulty == "easy") {
             task.classList.add("easy-difficulty")
@@ -78,7 +90,9 @@ function createProject(title, priority) {
     deleteProjectBtn.classList.add("delete")
     projectUI.appendChild(deleteProjectBtn)
     deleteProjectBtn.addEventListener("click", () => {
-        projectUI.remove()
+        const index = projects.indexOf(project)
+        deleteInstance(projectUI, projects, index)
+        
     })
     content.appendChild(projectUI)  
 
@@ -115,8 +129,11 @@ function createProject(title, priority) {
     })  
     return project
 }
+function getProjects() {
+    return projects
+}
 function getCurrentProject() {
     return currentProject
 }
 
-export { Project, createProject, getCurrentProject }
+export { Project, createProject, getCurrentProject, getProjects }

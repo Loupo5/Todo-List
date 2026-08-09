@@ -1,4 +1,4 @@
-import { Project, createProject, getCurrentProject } from "./projectManager.js" 
+import { Project, createProject, getCurrentProject, getProjects } from "./projectManager.js" 
 
 class Task {
     constructor(title, description, duration, difficulty) {
@@ -31,7 +31,6 @@ function getInput() {
 
     const taskDuration = document.getElementById("duration")
     const errorMessage = document.getElementById("error")
-    console.log(taskDuration.value)
     if (taskDuration.value === "") {
         taskDuration.value = ""
     }
@@ -92,7 +91,7 @@ function taskConfiguration() {
     })
     confirmTaskBtn.addEventListener("click", () => {
         const currentProject = getCurrentProject()
-        if (!currentProject) {
+        if (!currentProject || getProjects().length == 0) {
             const errorMsg = document.createElement("dialog")
             errorMsg.classList.add("error")
             errorMsg.textContent = "Error, no project selected!!"
@@ -111,9 +110,7 @@ function taskConfiguration() {
         taskDialog.close()
 
         const newTask = new Task(input.title, input.description, input.duration, input.difficulty)
-        
         currentProject.addTask(newTask)
-        console.log(currentProject)
     })
 }
 
