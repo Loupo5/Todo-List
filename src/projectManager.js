@@ -32,7 +32,8 @@ function loadProjects() {
     const data = JSON.parse(savedProjects)
 
     data.forEach(projectData => {
-        createProject(projectData.title, projectData.priority)
+
+        createProject(projectData.title, projectData.priority, projectData.tasks)
     }) 
 }
 
@@ -97,9 +98,10 @@ function renderProject() {
 
 
 const content = document.querySelector(".content")
-function createProject(title, priority) {
+function createProject(title, priority, tasks = []) {
 
     const project = new Project(title, priority)
+    project.tasks = tasks
     projects.push(project)
     saveProjects()
 
@@ -140,6 +142,7 @@ function createProject(title, priority) {
         currentProjectUI = projectUI
         projectUI.classList.add("current-project")
         currentProject = project
+        console.log(currentProject.tasks)
 
         if (!project.tasks[0]) return 
         renderProject()

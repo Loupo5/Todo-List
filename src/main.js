@@ -112,8 +112,8 @@ function taskConfiguration() {
 
         const newTask = new Task(input.title, input.description, input.duration, input.difficulty)
         const currentProject = getCurrentProject()
+        if (!currentProject) return 
         currentProject.addTask(newTask)
-        const projects = getProjects()
         saveProjects()
     })
 }
