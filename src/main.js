@@ -102,8 +102,9 @@ function taskConfiguration() {
     closeTaskBtn.addEventListener("click", () => {
         taskDialog.close()
     })
-    confirmTaskBtn.addEventListener("click", () => {
-        
+    confirmTaskBtn.addEventListener("click", (e) => {
+        e.preventDefault()
+
         const input = getInput()
         if (!input) {
             return
@@ -117,6 +118,7 @@ function taskConfiguration() {
         saveProjects()
     })
 }
+const taskForm = document.getElementById("task-form")
 
 
 
