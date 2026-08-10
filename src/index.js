@@ -29,8 +29,8 @@ function storageAvailable(type) {
   }
 }
 if (storageAvailable("localStorage")) {
-    console.log("You can use local storage nigg")
+    console.log("You can use local storage ")
 }
 else {
-    console.log("you dont have acces to local storagen igg")
+    console.log("you dont have acces to local storage")
 }

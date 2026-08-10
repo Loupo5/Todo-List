@@ -81,8 +81,15 @@ function renderProject() {
         else if (item.difficulty == "hard") {
             task.classList.add("hard-difficulty")
         }
+        console.log(item.difficulty)
 
         projectContent.appendChild(task)
+        if (dialog.close()) {
+            taskTitle.textContent = ""
+            taskDescription = ""
+            taskDuration.textContent = ""
+            item.difficulty = "medium"
+        } 
     }
     dialog.appendChild(projectContent)
     dialog.appendChild(closeBtn)
@@ -122,7 +129,9 @@ function createProject(title, priority, tasks = []) {
     deleteProjectBtn.addEventListener("click", (e) => {
         e.stopPropagation()
         const index = projects.indexOf(project)
-        deleteInstance(projectUI, projects, index) 
+        deleteInstance(projectUI, projects, index)
+        const projectBtn = document.getElementById("add-project")
+        projectBtn.disabled = false 
         saveProjects() 
     })
 
@@ -142,7 +151,6 @@ function createProject(title, priority, tasks = []) {
         currentProjectUI = projectUI
         projectUI.classList.add("current-project")
         currentProject = project
-        console.log(currentProject.tasks)
 
         if (!project.tasks[0]) return 
         renderProject()
